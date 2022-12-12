@@ -1,0 +1,5 @@
+<template>
+  <div>
+    <h1 class="font-bold underline">This is an about page</h1>
+  </div>
+</template>
