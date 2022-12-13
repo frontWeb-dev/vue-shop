@@ -1,5 +1,15 @@
 <template>
-  <div>
-    <h1 class="font-bold underline">This is an about page</h1>
+  <div id="app">
+    <Header />
+    <MainPage />
   </div>
 </template>
+<script lang="ts">
+import MainPage from './pages/MainPage.vue';
+import Header from './components/Header.vue';
+export default {
+  name: 'app',
+  components: { MainPage, Header },
+};
+</script>
+<style></style>
