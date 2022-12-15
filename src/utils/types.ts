@@ -5,3 +5,20 @@ export interface bannerProps {
   text: string;
   type: string;
 }
+
+export interface itemsProps {
+  id: number;
+  title: string;
+  price: number;
+  category: string;
+  description: string;
+  image: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
+}
+
+export interface toggleMenuProps {
+  toggleMenu: () => void;
+}

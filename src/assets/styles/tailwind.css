@@ -12,16 +12,15 @@
   .btn-md {
     @apply h-12 px-4 text-sm;
   }
+
   .btn-ghost {
-    border-width: 1px;
-    border-color: transparent;
-    background-color: transparent;
-    color: currentColor;
+    @apply border-0 bg-transparent text-current border-current;
   }
   .btn-square {
-    height: 3rem;
-    width: 3rem;
-    padding: 0;
+    @apply h-12 w-12 p-0;
+  }
+  .link-active {
+    @apply hover:bg-gray-200 hover:rounded-md active:rounded-md active:bg-activeColor;
   }
   .shadow-lg {
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
