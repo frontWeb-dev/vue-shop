@@ -4,13 +4,13 @@
       <!-- navigation -->
       <div class="gnb flex items-center gap-2">
         <!-- menu btn - mobile -->
-        <button class="lg:hidden btn btn-square btn-ghost w-10 sm:w-auto">
+        <button @click="openMenu" class="lg:hidden btn btn-square btn-ghost w-10 sm:w-auto">
           <span class="screen-only">메뉴 펼쳐보기</span>
           <img class="w-6 h-6" src="/assets/asset 15.svg" alt="메뉴 펼쳐보기" />
         </button>
         <!-- logo -->
         <h1 class="font-bold text-lg">
-          <a href="/">Vue Shop</a>
+          <router-link to="/">Vue Shop</router-link>
         </h1>
         <!-- menu list - pc -->
         <ul class="menu flex hidden md:flex">
@@ -19,7 +19,7 @@
             :key="menu.category"
             class="btn btn-ghost btn-sm rounded-btn text-gray-700 dark:text-white"
           >
-            <a :href="menu.url">{{ menu.category }}</a>
+            <router-link :to="menu.url">{{ menu.category }}</router-link>
           </li>
         </ul>
       </div>
@@ -31,7 +31,7 @@
           <span class="screen-only">{{ theme }} 모드</span>
           <img
             class="w-7 h-7"
-            v-bind:src="`${theme === 'light' ? '/assets/asset 17.svg' : '/assets/asset 16.svg'}`"
+            :src="`${theme === 'light' ? '/assets/asset 17.svg' : '/assets/asset 16.svg'}`"
             alt="{{ theme }} 모드"
           />
         </button>
@@ -46,12 +46,13 @@
         <!-- search form -->
         <form
           :class="{
-            '-top-16, opacity-0': formIsOpen === 'false',
-            'top-16, opacity-100': formIsOpen === 'true',
+            '-top-16, opacity-0': formIsOpen === false,
+            'top-16, opacity-100': formIsOpen === true,
+            'sm:block': true,
           }"
-          class="w-full h-12 absolute top-16 left-0 transition-all in-expo duration-150 sm:block"
+          class="w-full h-12 absolute top-16 left-0 transition-all in-expo duration-150 sm:block sm:relative sm:top-0 sm:rounded sm:opacity-100"
         >
-          <input class="w-full h-full bg-gray-200 px-3 outline-0" type="text" placeholder="검색" />
+          <input class="w-full h-full bg-gray-300 px-3 outline-0" type="text" placeholder="검색" />
           <div class="results">
             <ul>
               <li><a href=""></a></li>
@@ -62,7 +63,7 @@
         <button class="relative btn btn-square">
           <span
             class="flex items-center justify-center absolute top-0 right-0 py-1 px-2 rounded-full bg-red-500 text-white text-xs"
-            >1</span
+            >0</span
           >
           <img
             class="w-6 h-6"
@@ -72,30 +73,42 @@
         </button>
       </div>
     </div>
+    <SideMenu ref="child_component" />
   </div>
 </template>
 
 <script lang="ts">
 import { menu } from '../mocks/menu';
+import router from '../routes';
+import { toggleMenuProps } from '../utils/types';
+import SideMenu from './SideMenu.vue';
 
 export default {
   data() {
     return {
       menus: menu,
       theme: 'dark',
-      formIsOpen: 'false',
+      formIsOpen: false,
     };
   },
+
   methods: {
     changeTheme() {
       if (this.theme === 'dark') this.theme = 'light';
       else this.theme = 'dark';
     },
     searchItems() {
-      console.log(this.formIsOpen);
-      if (this.formIsOpen === 'false') this.formIsOpen = 'true';
-      else this.formIsOpen = 'false';
+      if (this.formIsOpen === false) this.formIsOpen = true;
+      else this.formIsOpen = false;
     },
+
+    openMenu() {
+      (this.$refs['child_component'] as toggleMenuProps).toggleMenu();
+    },
+  },
+  components: {
+    SideMenu,
+    router,
   },
 };
 </script>
