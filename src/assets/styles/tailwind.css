@@ -4,7 +4,7 @@
 
 @layer components {
   .btn {
-    @apply flex flex-wrap items-center justify-center rounded-lg font-bold cursor-pointer;
+    @apply flex flex-wrap items-center justify-center rounded-lg font-bold cursor-pointer rounded-lg;
   }
   .btn-sm {
     @apply h-8 px-3 text-sm;
@@ -12,12 +12,23 @@
   .btn-md {
     @apply h-12 px-4 text-sm;
   }
-
+  .btn-primary {
+    background-color: #570df8;
+  }
   .btn-ghost {
     @apply border-0 bg-transparent text-current border-current;
   }
   .btn-square {
     @apply h-12 w-12 p-0;
+  }
+  .btn-border {
+    border-width: 1px;
+    border-color: currentColor;
+    background-color: transparent;
+  }
+  .btn-border:hover {
+    background-color: #1f2937;
+    color: #fff;
   }
   .link-active {
     @apply hover:bg-gray-200 hover:rounded-md active:rounded-md active:bg-activeColor;
@@ -25,14 +36,18 @@
   .shadow-lg {
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   }
-  .screen-only {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
+  .item_list {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(320px, 1fr);
+    overflow-x: scroll;
+  }
+  .item_card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+    border-radius: 1rem;
+    border-width: 1px;
   }
 }
