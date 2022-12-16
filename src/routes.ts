@@ -13,7 +13,7 @@ const routes = [
     name: 'home',
     component: MainPage,
   },
-  { path: '/:category', component: CategoryPage },
+  { path: '/:category', name: 'category', component: CategoryPage },
   { path: '/product/:id', name: 'product', component: DetailPage, props: true },
   { path: '/cart', name: 'cart', component: CartPageVue },
   { path: '/:catchAll(.*)', name: 'ErrorPage', component: ErrorPage },

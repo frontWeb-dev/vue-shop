@@ -19,7 +19,9 @@
             :key="menu.category"
             class="btn btn-ghost btn-sm rounded-btn text-gray-700 dark:text-white"
           >
-            <router-link :to="menu.url">{{ menu.category }}</router-link>
+            <router-link :to="{ name: 'category', params: { category: menu.url } }">{{
+              menu.category
+            }}</router-link>
           </li>
         </ul>
       </div>
@@ -60,17 +62,17 @@
           </div>
         </form>
         <!-- go to cart -->
-        <button class="relative btn btn-square">
+        <router-link class="relative btn btn-square" :to="{ name: 'cart' }">
           <span
             class="flex items-center justify-center absolute top-0 right-0 py-1 px-2 rounded-full bg-red-500 text-white text-xs"
-            >0</span
+            >{{ items.length }}</span
           >
           <img
             class="w-6 h-6"
             src="https://cdn-icons-png.flaticon.com/512/4903/4903482.png"
             alt="장바구니 바로가기"
           />
-        </button>
+        </router-link>
       </div>
     </div>
     <SideMenu ref="child_component" />
@@ -84,8 +86,15 @@ import router from '../routes';
 import { useApiStore } from '../stores/api';
 import { toggleMenuProps } from '../utils/types';
 import SideMenu from './SideMenu.vue';
+import { useCartStore } from '../stores/cart';
 
 export default {
+  setup() {
+    const store = useCartStore();
+    const { items } = storeToRefs(store);
+
+    return { items };
+  },
   data() {
     return {
       menus: menu,
