@@ -22,3 +22,7 @@ export interface itemsProps {
 export interface toggleMenuProps {
   toggleMenu: () => void;
 }
+
+export interface piniaProps {
+  text?: itemsProps[] | undefined;
+}
