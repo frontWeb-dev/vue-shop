@@ -42,9 +42,6 @@ export default {
     Slide,
     Pagination,
   },
-  computed: {
-    bgProps() {},
-  },
 };
 </script>
 <style scoped>

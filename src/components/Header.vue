@@ -5,7 +5,7 @@
       <div class="gnb flex items-center gap-2">
         <!-- menu btn - mobile -->
         <button @click="openMenu" class="lg:hidden btn btn-square btn-ghost w-10 sm:w-auto">
-          <span class="screen-only">메뉴 펼쳐보기</span>
+          <span class="sr-only">메뉴 펼쳐보기</span>
           <img class="w-6 h-6" src="/assets/asset 15.svg" alt="메뉴 펼쳐보기" />
         </button>
         <!-- logo -->
@@ -28,7 +28,7 @@
       <div class="flex items-center px-2">
         <!-- change mode btn -->
         <button @click="changeTheme" class="btn btn-square">
-          <span class="screen-only">{{ theme }} 모드</span>
+          <span class="sr-only">{{ theme }} 모드</span>
           <img
             class="w-7 h-7"
             :src="`${theme === 'light' ? '/assets/asset 17.svg' : '/assets/asset 16.svg'}`"
@@ -78,8 +78,10 @@
 </template>
 
 <script lang="ts">
+import { storeToRefs } from 'pinia';
 import { menu } from '../mocks/menu';
 import router from '../routes';
+import { useApiStore } from '../stores/api';
 import { toggleMenuProps } from '../utils/types';
 import SideMenu from './SideMenu.vue';
 
@@ -106,6 +108,7 @@ export default {
       (this.$refs['child_component'] as toggleMenuProps).toggleMenu();
     },
   },
+
   components: {
     SideMenu,
     router,
