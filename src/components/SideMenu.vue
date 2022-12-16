@@ -1,8 +1,8 @@
 <template>
   <div
     @click="closeMenu"
-    :class="{ '-left-full': menuIsOpen === false }"
-    class="fixed inset-0 w-screen h-screen bg-black/50"
+    :class="{ '-left-full': menuIsOpen === false, 'bg-black/50': menuIsOpen === true }"
+    class="fixed inset-0 w-screen h-screen"
   >
     <div class="menu w-60 sm:w-80 h-full p-4 bg-white dark:bg-base-100" data-type="menu">
       <ul>
