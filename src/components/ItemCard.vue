@@ -8,7 +8,7 @@
       },
     }"
   >
-    <div class="img">
+    <div class="flex items-center justify-center bg-white overflow-hidden h-80">
       <img :src="product.image" :alt="product.title" />
     </div>
     <div class="flex flex-auto flex-col gap-2 p-4 text-base bg-gray-100 dark:bg-gray-700">
@@ -27,28 +27,8 @@ export default {
 </script>
 
 <style scoped>
-.img {
-  height: 20rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff;
-  overflow: hidden;
-}
-
 img {
   max-width: 50%;
   max-height: 50%;
-}
-.info {
-  width: 100%;
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
-  gap: 20px;
-  padding: 1.5rem;
-  color: #000;
-  font-weight: 600;
-  background-color: #eee;
 }
 </style>

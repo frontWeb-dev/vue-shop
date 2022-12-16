@@ -9,8 +9,10 @@ export const useCartStore = defineStore('cart', {
     items: [],
   }),
   actions: {
-    addItem(item) {
+    addItem(item: any) {
       this.items.push(item);
+      localStorage.setItem('cartItem', JSON.stringify(this.items));
+      console.log(this.items);
     },
     deleteItem(id: number) {
       const index = this.items.findIndex((i) => i.id === id);

@@ -2,7 +2,7 @@
   <div class="item_detail pt-16" v-for="item in data" :key="item.id">
     <section class="pt-4 lg:pt-5 pb-4 lg:pb-8 px-4 xl:px-2 xl:container mx-auto">
       <div class="py-2">
-        {{ menu.filter((a: any) => item.category.match(a.apiCategory))[0].category }} >
+        {{ menu.filter((a) => item.category.match(a.apiCategory))[0].category }} >
         {{ item.title }}
       </div>
       <div class="lg:flex lg:items-center mt-6 md:mt-14 px-2 lg:px-0">
@@ -19,10 +19,12 @@
           </div>
           <p class="mt-2 mb-4 text-3xl">$ {{ item.price }}</p>
           <div class="flex items-start gap-2">
-            <button class="btn btn-md btn-primary text-white">장바구니에 담기</button>
+            <button class="btn btn-md btn-primary text-white" @click="addItem">
+              장바구니에 담기
+            </button>
             <router-link :to="{ name: 'cart' }" class="btn btn-md btn-border ml-1"
-              >장바구니로 이동</router-link
-            >
+              >장바구니로 이동
+            </router-link>
           </div>
         </div>
       </div>
@@ -35,11 +37,13 @@ import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { menu } from '../mocks/menu';
 import { useApiStore } from '../stores/api';
+import { useCartStore } from '../stores/cart';
 
 export default {
   setup() {
     const route = useRoute();
     const store = useApiStore();
+    const cartStore = useCartStore();
     const data = ref();
 
     onMounted(async () => {
@@ -47,14 +51,18 @@ export default {
       await store.fetchApi();
 
       data.value = store.filterId(+id);
-      console.log(data.value);
     });
-    return { data };
+    return { data, cartStore };
   },
   data() {
     return {
       menu: menu,
     };
+  },
+  methods: {
+    addItem() {
+      this.cartStore.addItem(this.data);
+    },
   },
 };
 </script>
