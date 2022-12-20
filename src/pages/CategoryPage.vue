@@ -1,10 +1,12 @@
 <template>
-  <Suspense>
-    <ItemList :category="category" />
-    <template #fallback>
-      <div>Loading...</div>
-    </template>
-  </Suspense>
+  <div class="pt-16 main dark:main-bg dark:main-text">
+    <Suspense>
+      <ItemList :category="category" />
+      <template #fallback>
+        <div>Loading...</div>
+      </template>
+    </Suspense>
+  </div>
 </template>
 
 <script lang="ts">
