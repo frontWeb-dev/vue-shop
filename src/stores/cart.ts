@@ -10,14 +10,17 @@ export const useCartStore = defineStore('cart', {
   }),
   actions: {
     addItem(item: any) {
-      this.items.push(item);
-      localStorage.setItem('cartItem', JSON.stringify(this.items));
+      if (this.items === null) {
+        this.items = [];
+      }
+      this.items.push({ ...item });
       console.log(this.items);
     },
+
     deleteItem(id: number) {
-      const index = this.items.findIndex((i) => i.id === id);
-      if (index <= -1) return;
-      this.items.splice(index, 1);
+      const index = this.items.findIndex((i) => i[0].id === +id);
+      let copy = this.items.filter((_, i: number) => i !== index);
+      this.items = copy;
     },
   },
 });

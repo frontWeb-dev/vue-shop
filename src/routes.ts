@@ -7,7 +7,7 @@ import DetailPage from './pages/DetailPage.vue';
 import MainPage from './pages/MainPage.vue';
 import ErrorPage from './pages/ErrorPage.vue';
 
-const routes = [
+const routes: any = [
   {
     path: '/',
     name: 'home',
@@ -16,7 +16,11 @@ const routes = [
   { path: '/:category', name: 'category', component: CategoryPage },
   { path: '/product/:id', name: 'product', component: DetailPage, props: true },
   { path: '/cart', name: 'cart', component: CartPageVue },
-  { path: '/:catchAll(.*)', name: 'ErrorPage', component: ErrorPage },
+  {
+    path: '/404',
+    name: 'ErrorPage',
+    component: ErrorPage,
+  },
 ];
 
 const router = createRouter({

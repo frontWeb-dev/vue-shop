@@ -19,6 +19,10 @@ export interface itemsProps {
   };
 }
 
+export interface ProxyProps {
+  0: itemsProps;
+}
+
 export interface toggleMenuProps {
   toggleMenu: () => void;
 }
