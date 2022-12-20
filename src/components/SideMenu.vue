@@ -4,13 +4,14 @@
     :class="{ '-left-full': menuIsOpen === false, 'bg-black/50': menuIsOpen === true }"
     class="fixed inset-0 w-screen h-screen"
   >
-    <div class="menu w-60 sm:w-80 h-full p-4 bg-white dark:bg-base-100" data-type="menu">
+    <div class="menu w-60 sm:w-80 h-full p-4 bg-white dark:main-bg" data-type="menu">
       <ul>
         <li v-for="menu in menus" :key="menu.category">
           <router-link
             class="block link-active font-bold py-3 px-4 !text-gray-700 active:!text-white dark:!text-white"
-            :to="menu.url"
-            >{{ menu.category }}</router-link
+            :to="{ name: 'category', params: { category: menu.url } }"
+          >
+            {{ menu.category }}</router-link
           >
         </li>
       </ul>

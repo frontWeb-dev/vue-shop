@@ -1,20 +1,25 @@
 <template>
-  <div class="banner">
+  <div class="banner dark:main-bg">
     <Carousel :autoplay="5000" :wrap-around="true">
       <Slide v-for="item in items" :key="item.type">
         <div
           class="carousel__item w-full h-220 mt-16 bg-no-repeat bg-cover lg:h-700"
-          v-bind:style="{ backgroundImage: `url('${item.image}') ` }"
+          :style="{ backgroundImage: `url('${item.image}') ` }"
         >
-          <div
-            class="carousel-description w-full h-full flex flex-col items-start justify-center gap-2 px-4 md:px-10 text-white bg-black/40"
-          >
-            <h2 class="font-bold text-2xl lg:text-4xl">{{ item.title }}</h2>
-            <p>{{ item.text }}</p>
-            <button class="flex items-center justify-center mt-3 btn btn-sm lg:btn-md bg-btnColor">
-              바로가기
-              <img class="w-5 h-5 ml-1 filter" src="/assets/asset 20.svg" alt="바로가기" />
-            </button>
+          <div class="carousel-description w-full h-full text-white bg-black/40">
+            <div
+              class="flex flex-col items-start justify-center gap-2 w-full h-full px-4 md:px-10 xl:container mx-auto"
+            >
+              <h2 class="font-bold text-2xl lg:text-4xl">{{ item.title }}</h2>
+              <p>{{ item.text }}</p>
+              <router-link
+                class="flex items-center justify-center mt-3 btn btn-sm lg:btn-md bg-btnColor"
+                :to="item.type"
+              >
+                바로가기
+                <img class="w-5 h-5 ml-1 filter" src="/assets/asset 20.svg" alt="바로가기" />
+              </router-link>
+            </div>
           </div>
         </div>
       </Slide>

@@ -1,25 +1,25 @@
 <template>
-  <div class="item_List pt-16">
-    <section
-      v-if="$route.params.category === undefined"
-      class="pt-6 lg:pt-12 pb-4 lg:pb-8 px-4 xl:px-2 mt-10 xl:container mx-auto"
-    >
-      <h2 class="mb-5 lg:mb-8 text-3xl lg:text-4xl text-center font-bold">{{ category }}</h2>
-      <div class="grid gap-6 xmd:item_list md:grid-cols-2 lg:grid-cols-4">
-        <ItemCard v-for="product in filterData.slice(0, 4)" :key="product.id" :product="product" />
-      </div>
-    </section>
-    <section
-      v-if="$route.params.category !== undefined"
-      class="pt-6 lg:pt-12 pb-4 lg:pb-8 px-4 xl:px-2 xl:container mx-auto"
-    >
-      <div>홈 > {{ category }}</div>
+  <section
+    v-if="$route.params.category === undefined"
+    class="pt-6 lg:pt-12 pb-4 lg:pb-8 px-4 xl:px-2 xl:container mx-auto"
+  >
+    <h2 class="mb-5 lg:mb-8 text-3xl lg:text-4xl text-center font-bold">{{ category }}</h2>
+    <div class="grid gap-6 xmd:item_list md:grid-cols-2 lg:grid-cols-4">
+      <ItemCard v-for="product in filterData.slice(0, 4)" :key="product.id" :product="product" />
+    </div>
+  </section>
+  <section
+    v-if="$route.params.category !== undefined"
+    class="pt-4 lg:pt-5 pb-4 lg:pb-8 px-4 xl:px-2 xl:container mx-auto"
+  >
+    <div class="text-sm breadcrumbs">홈 > {{ category }}</div>
+    <div class="pt-2 lg:pt-4 pb-4 lg:pb-8 px-4 xl:px-2 mb-20 xl:container mx-auto">
       <h2 class="mb-5 lg:mb-8 text-3xl lg:text-4xl text-center font-bold">{{ category }}</h2>
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <ItemCard v-for="product in filterData" :key="product.id" :product="product" />
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 </template>
 
 <script lang="ts">
