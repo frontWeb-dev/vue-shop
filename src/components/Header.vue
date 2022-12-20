@@ -107,7 +107,7 @@ import { useDark, useToggle } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
 import { menu } from '../mocks/menu';
 import router from '../routes';
-import { toggleMenuProps } from '../utils/types';
+import { itemsProps, toggleMenuProps } from '../utils/types';
 import SideMenu from './SideMenu.vue';
 import { useCartStore } from '../stores/cart';
 import { onMounted, ref, watch } from 'vue';
@@ -167,14 +167,16 @@ export default {
     openMenu() {
       (this.$refs['child_component'] as toggleMenuProps).toggleMenu();
     },
-    updateInput(e) {
-      let updateText = e.target.value;
+    updateInput(e: Event) {
+      let updateText = (e.target as HTMLInputElement).value;
       this.inputText = updateText;
     },
   },
   watch: {
     inputText() {
-      this.searchData = this.product.filter((a) => a.title.toLowerCase().includes(this.inputText));
+      this.searchData = this.product.filter((a: itemsProps) =>
+        a.title.toLowerCase().includes(this.inputText)
+      );
       console.log(this.searchData);
     },
   },
