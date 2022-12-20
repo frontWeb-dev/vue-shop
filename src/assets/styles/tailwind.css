@@ -4,7 +4,7 @@
 
 @layer components {
   .btn {
-    @apply flex flex-wrap items-center justify-center rounded-lg font-bold cursor-pointer rounded-lg;
+    @apply inline-flex flex-wrap items-center justify-center rounded-lg font-bold cursor-pointer rounded-lg;
   }
   .btn-sm {
     @apply h-8 px-3 text-sm;
@@ -13,7 +13,8 @@
     @apply h-12 px-4 text-sm;
   }
   .btn-primary {
-    background-color: #570df8;
+    color: #fff;
+    background-color: #6419e6;
   }
   .btn-ghost {
     @apply border-0 bg-transparent text-current border-current;
@@ -49,5 +50,102 @@
     overflow: hidden;
     border-radius: 1rem;
     border-width: 1px;
+  }
+  .product-title {
+    @apply flex items-center gap-2 text-xl font-bold;
+  }
+  .product-info {
+    @apply flex flex-col flex-auto p-8 gap-2;
+  }
+  .btn-group {
+    @apply flex flex-wrap;
+  }
+  .btn-group > .btn:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .btn-group > .btn:not(:first-child) {
+    margin-left: -1px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .modal {
+    @apply fixed inset-0 flex items-end justify-center bg-black/50;
+    z-index: 9999;
+  }
+  .modal-box {
+    @apply w-full bg-white;
+    max-height: calc(100vh - 5em);
+    padding: 1.5rem;
+    box-shadow: 0 25px 50px -12px #00000040;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+  @media (min-width: 640px) {
+    .modal {
+      align-items: center;
+    }
+    .modal-box {
+      max-width: 32rem;
+      border-radius: 1rem;
+    }
+  }
+  .main-bg {
+    background-color: #2a303c;
+  }
+  .sub-bg {
+    background-color: #374151;
+  }
+  .main-text {
+    color: #a6aaba;
+  }
+  .sub-text {
+    color: #fff;
+  }
+  .button-bg {
+    background-color: #191d24;
+  }
+  .border {
+    border: none;
+  }
+  .search {
+    color: #a6aaba;
+    background-color: #4b5563;
+  }
+  .dark-filter {
+    filter: invert(100%) sepia(0%) saturate(7488%) hue-rotate(355deg) brightness(105%)
+      contrast(105%);
+  }
+  .light-filter {
+    filter: invert(23%) sepia(33%) saturate(353%) hue-rotate(177deg) brightness(95%) contrast(94%);
+  }
+  .hover-bg:hover {
+    color: #2a303c;
+    background-color: #a6aaba;
+    border: none;
+  }
+  .primary-bg:hover {
+    background-color: #5041b8;
+  }
+  .header-bg {
+    background-color: #191d24;
+  }
+  .main {
+    min-height: calc(100vh - 4rem - 224px);
+  }
+  .breadcrumbs {
+    max-width: 100%;
+    overflow-x: auto;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .chip {
+    background-color: #1fb2a6;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 1rem;
+  }
+  .titie-link:hover {
+    text-decoration: underline;
   }
 }
